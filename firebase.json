@@ -1,0 +1,64 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "bankaio-766e3",
+          "appId": "1:273018994023:android:6e7ea0afc0a359311d03c2",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "bankaio-766e3",
+          "configurations": {
+            "android": "1:273018994023:android:6e7ea0afc0a359311d03c2",
+            "ios": "1:273018994023:ios:fc28137380723ebc1d03c2",
+            "macos": "1:273018994023:ios:fc28137380723ebc1d03c2",
+            "web": "1:273018994023:web:fd20a8a6fcd209ef1d03c2",
+            "windows": "1:273018994023:web:055a9c4987d052f41d03c2"
+          }
+        }
+      }
+    }
+  },
+  "firestore": {
+    "database": "(default)",
+    "location": "southamerica-east1",
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "*.local"
+      ],
+      "predeploy": [
+        "npm --prefix \"$RESOURCE_DIR\" run lint"
+      ]
+    }
+  ],
+  "emulators": {
+    "auth": {
+      "port": 9099
+    },
+    "functions": {
+      "port": 5001
+    },
+    "firestore": {
+      "port": 8080
+    },
+    "ui": {
+      "enabled": true,
+      "host": "localhost",
+      "port": 4000
+    },
+    "singleProjectMode": true
+  }
+}

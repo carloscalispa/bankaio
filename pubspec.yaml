@@ -1,0 +1,44 @@
+name: bankaio
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.8.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+  equatable: ^2.0.5    
+
+  # Manejo de estado con Riverpod y Hooks
+  flutter_riverpod: ^2.5.1
+  hooks_riverpod: ^2.5.1
+  flutter_hooks: ^0.20.5
+
+  # Navegación
+  go_router: ^13.2.0
+
+  # Íconos
+  cupertino_icons: ^1.0.8
+
+  # Firebase
+  firebase_core: ^2.32.0
+  firebase_auth: ^4.17.0
+  cloud_firestore: ^4.17.0
+  cloud_functions: ^4.6.7
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  integration_test:
+    sdk: flutter
+  mocktail: ^1.0.3    
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/BankAio.png

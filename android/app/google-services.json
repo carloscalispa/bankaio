@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "273018994023",
+    "project_id": "bankaio-766e3",
+    "storage_bucket": "bankaio-766e3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:273018994023:android:6e7ea0afc0a359311d03c2",
+        "android_client_info": {
+          "package_name": "com.calispa.bankaio"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAg-2VQCpXz7bKWZehTwzwW3NBqRuO6vl4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

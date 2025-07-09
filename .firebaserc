@@ -1,0 +1,9 @@
+{
+  "projects": {
+    "default": "bankaio-766e3",
+    "prod": "bankaio-766e3",
+    "dev": "bankaio-766e3"
+  },
+  "targets": {},
+  "etags": {}
+}
