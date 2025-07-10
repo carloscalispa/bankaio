@@ -4,6 +4,7 @@ import 'core/routes/router.dart';
 import 'core/theme/theme.dart';
 import 'core/config/environment.dart';
 import 'core/bootstrap/firebase_env_initializer.dart';
+import 'core/auth/auth_listener.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,11 +18,13 @@ class BankaioApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: Environment.appName,
-      debugShowCheckedModeBanner: Environment.showDebugBanner,
-      theme: AppTheme.theme,
-      routerConfig: appRouter,
+    return AuthListener(
+      child: MaterialApp.router(
+        title: Environment.appName,
+        debugShowCheckedModeBanner: Environment.showDebugBanner,
+        theme: AppTheme.theme,
+        routerConfig: appRouter,
+      ),
     );
   }
 }

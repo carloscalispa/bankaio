@@ -3,6 +3,7 @@ import 'package:bankaio/data/repositories/auth_repository_impl.dart';
 import 'package:bankaio/domain/repositories/auth_repository.dart';
 import 'package:bankaio/domain/usecases/login_usecase.dart';
 import 'package:bankaio/domain/usecases/password_reset_usecase.dart';
+import 'package:bankaio/domain/usecases/logout_usecase.dart';
 import 'auth_notifier.dart';
 import 'auth_state.dart';
 
@@ -20,9 +21,15 @@ final passwordResetUseCaseProvider = Provider<PasswordResetUseCase>((ref) {
   return PasswordResetUseCase(repository);
 });
 
+final logoutUseCaseProvider = Provider<LogoutUseCase>((ref) {
+  final repository = ref.watch(authRepositoryProvider);
+  return LogoutUseCase(repository);
+});
+
 final loginProvider = StateNotifierProvider.autoDispose<AuthNotifier, LoginState>((ref) {
   final loginUseCase = ref.watch(loginUseCaseProvider);
   final passwordResetUseCase = ref.watch(passwordResetUseCaseProvider);
-  return AuthNotifier(loginUseCase, passwordResetUseCase);
+  final logoutUseCase = ref.watch(logoutUseCaseProvider);
+  return AuthNotifier(loginUseCase, passwordResetUseCase, logoutUseCase);
 });
 

@@ -38,7 +38,7 @@ void main() {
       );
       await tester.pumpAndSettle();
 
-      print('[TEST] Pantalla de login cargada');
+      debugPrint('[TEST] Pantalla de login cargada');
 
       await pumpUntilFound(tester, find.byKey(const Key('email_field')));
       await tester.enterText(find.byKey(const Key('email_field')), 'ccalispa@yahoo.es');

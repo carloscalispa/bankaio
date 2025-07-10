@@ -6,8 +6,8 @@ void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
   testWidgets('Carga de pantalla de login', (WidgetTester tester) async {
-    await app.main(); // Ejecuta tu app desde main_emuladores.dart
-    await tester.pumpAndSettle(); // Espera a que todo esté renderizado
+    await app.main();
+    await tester.pumpAndSettle();
 
     // Validaciones básicas
     expect(find.text('Usuario'), findsOneWidget);

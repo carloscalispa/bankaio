@@ -53,4 +53,9 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<void> sendPasswordResetEmail(String email) async {
     await _firebaseAuth.sendPasswordResetEmail(email: email);
   }
+
+  @override
+  Future<void> logout() async {
+    await _firebaseAuth.signOut();
+  }
 }
