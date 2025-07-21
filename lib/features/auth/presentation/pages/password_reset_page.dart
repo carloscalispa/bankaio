@@ -3,6 +3,7 @@ import 'package:bankaio/features/auth/presentation/providers/password_reset_prov
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:bankaio/features/auth/presentation/providers/login_attempts_provider.dart';
 
 class PasswordResetPage extends HookConsumerWidget {
   const PasswordResetPage({super.key});
@@ -25,6 +26,7 @@ class PasswordResetPage extends HookConsumerWidget {
     final navigator = Navigator.of(context);
 
     return Scaffold(
+      key: const ValueKey('reset_password_page'),
       appBar: AppBar(title: const Text("Recuperar contraseña")),
       body: Padding(
         padding: const EdgeInsets.all(24.0),
@@ -59,6 +61,9 @@ class PasswordResetPage extends HookConsumerWidget {
                       final result = await ref
                           .read(passwordResetProvider.notifier)
                           .sendResetEmail(email);
+                      // Desbloquear login si estaba bloqueado
+                      ref.read(loginAttemptsProvider.notifier).state = 0;
+                      ref.read(loginBlockedProvider.notifier).state = false;
 
                       if (!mounted.value) return;
 

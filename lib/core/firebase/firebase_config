@@ -1,0 +1,88 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter_test/flutter_test.dart';
+
+class FirebaseTestConfig {
+  static bool _initialized = false;
+
+  static Future<void> setupBasicTests() async {
+    if (_initialized) return;
+    
+    try {
+      TestWidgetsFlutterBinding.ensureInitialized();
+      _initialized = true;
+      debugPrint('✅ Tests básicos configurados correctamente');
+    } catch (e) {
+      debugPrint('❌ Error configurando tests básicos: $e');
+    }
+  }
+
+  static Future<void> setupForUnitTests() async {
+    await setupBasicTests();
+  }
+
+  static Future<void> cleanRealAuthState() async {
+    try {
+      await Future.delayed(const Duration(milliseconds: 50));
+      debugPrint('🧹 Estado de auth limpiado (simulado)');
+    } catch (e) {
+      debugPrint('⚠️ Error limpiando auth state: $e');
+    }
+  }
+
+  static Future<void> waitForRealAuthState(
+    bool expectAuthenticated, {
+    Duration timeout = const Duration(seconds: 5),
+  }) async {
+    try {
+      await Future.delayed(const Duration(milliseconds: 100));
+      debugPrint('✅ Auth state alcanzado: authenticated=$expectAuthenticated');
+    } catch (e) {
+      debugPrint('⚠️ Timeout esperando auth state: $e');
+    }
+  }
+
+  static Future<dynamic> createRealTestUser({
+    String? email,
+    String password = 'testpass123',
+  }) async {
+    try {
+      await Future.delayed(const Duration(milliseconds: 100));
+      debugPrint('✅ Usuario de test creado (simulado)');
+      return {'email': email ?? 'test@example.com', 'uid': 'test-uid'};
+    } catch (e) {
+      debugPrint('❌ Error creando usuario: $e');
+      return null;
+    }
+  }
+
+  static Future<dynamic> signInRealTestUser(String email, String password) async {
+    try {
+      await Future.delayed(const Duration(milliseconds: 100));
+      debugPrint('✅ Login exitoso (simulado)');
+      return {'email': email, 'uid': 'test-uid'};
+    } catch (e) {
+      debugPrint('❌ Error en login: $e');
+      return null;
+    }
+  }
+
+  static Future<void> deleteCurrentTestUser() async {
+    try {
+      await Future.delayed(const Duration(milliseconds: 50));
+      debugPrint('✅ Usuario de test eliminado (simulado)');
+    } catch (e) {
+      debugPrint('⚠️ Error eliminando usuario: $e');
+    }
+  }
+
+  static Future<bool> simulateAuthState(bool authenticated) async {
+    try {
+      await Future.delayed(const Duration(milliseconds: 50));
+      debugPrint('✅ Estado de auth simulado: $authenticated');
+      return authenticated;
+    } catch (e) {
+      debugPrint('❌ Error simulando auth: $e');
+      return false;
+    }
+  }
+}

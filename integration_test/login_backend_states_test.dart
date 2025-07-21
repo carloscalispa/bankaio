@@ -1,9 +1,10 @@
+import 'package:bankaio/helpers/auth_helper.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:bankaio/main_emuladores.dart' as app;
 import 'package:bankaio/core/firebase/firebase_initializer.dart';
-import 'package:bankaio/core/test_helpers/auth_test_helper.dart';
 import 'package:flutter/material.dart';
+
 
 /// Función helper mejorada para esperar widgets con mejor logging y manejo de errores
 Future<void> pumpUntilFound(
@@ -378,16 +379,10 @@ void main() {
         description: 'Botón de login'
       );
       
-      // Presionar login sin llenar campos
-      await tester.tap(find.byKey(const Key('login_button')));
-      await tester.pumpAndSettle(const Duration(seconds: 2));
-
-      // Verificar que aparece un SnackBar con error
-      expect(find.byType(SnackBar), findsOneWidget);
-      
-      // Esperar a que el SnackBar desaparezca
-      await clearAppState(tester);
-      debugPrint('✅ Test de campos vacíos pasó');
+      // Verificar que el botón está deshabilitado cuando los campos están vacíos
+      final loginButtonWidget = tester.widget<ElevatedButton>(find.byKey(const Key('login_button')));
+      expect(loginButtonWidget.onPressed, isNull, reason: 'El botón de login debe estar deshabilitado si los campos están vacíos');
+      debugPrint('✅ Test de campos vacíos pasó (botón deshabilitado)');
     });
 
     testWidgets('Login con contraseña incorrecta muestra error específico', (tester) async {
